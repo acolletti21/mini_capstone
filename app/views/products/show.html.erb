@@ -3,3 +3,13 @@
   <h4>Price: <%= @product.price %></h4>
   <h3>Image: <img src="<%= @product.image %>"></h3>
   <h3>Description: <%= @product.description %></h3>
+
+  <div>
+  <a href="/products">Home</a>
+  </div>
+  <div>
+  <a class="btn btn-info" href="/products/<%= @product.id %>/edit"> Edit Product Info</a>
+  </div>
+  <%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <input class="btn btn-danger" type="submit" value="Delete Product">
+  <% end %>

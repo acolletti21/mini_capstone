@@ -1,5 +1,6 @@
-<h2>Add a new Product to the Database</h2>
-<%= form_tag "/view_new_product_url", method: :post do%>
+<h2>Edit Product</h2>
+
+<%= form_tag "/products/#{@product.id}", method: :patch do%>
 <div>
   Name: <input type="text" name="name">
 </div>
@@ -15,5 +16,5 @@
 <div>
   Description: <input type="text" name="description">
 </div>
-<input type="submit" value="Make New Shoe"
+<input type="submit" value="Update Shoe"
 <% end %>
