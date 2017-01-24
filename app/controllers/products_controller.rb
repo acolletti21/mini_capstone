@@ -16,6 +16,8 @@ class ProductsController < ApplicationController
                             description: params[:description]
                             )
     @product.save
+    flash[:success] = "Product Successfully Created"
+    redirect_to "/products/#{@product.id}"
   end
 
   def show
@@ -34,11 +36,16 @@ class ProductsController < ApplicationController
     @product.description = params[:description]
 
     @product.save
+    flash[:success] = "Product Successfully Updated"
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
+    redirect_to "/products"
+    flash[:warning] = "Product has been destroyed"
+    redirect_to = "/products"
   end
     
 
