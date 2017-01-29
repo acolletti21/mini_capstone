@@ -1,3 +1,5 @@
+$main-color: black;
+
 body {
   font-family: Tahoma,Verdana,Segoe,sans-serif;
   background-image: url('jpeg.jpg');
@@ -5,4 +7,9 @@ body {
 
 .well img {
   width: 100%;
+}
+
+.sale-item {
+  color: red;
+  font-size: 16px;
 }
