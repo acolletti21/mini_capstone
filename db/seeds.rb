@@ -14,21 +14,23 @@
 #   {name: "Sam Edelman", email: "support@samedelman.com", phone: "8669873456"},
 #   {name: "Alexander McQueen", email: "am@alexandermcqueen.com", phone: "8882384937"}
 # ])
-image = Image.new(product_id: 1, url: "https://cdn.shopify.com/s/files/1/0366/7037/products/IMG_9642_edited_1024x1024.jpg?v=1469088093")
-image.save
-image = Image.new(product_id: 2, url: "http://www.irregularchoice.com/media/catalog/product/cache/1/image/700x/9df78eab33525d08d6e5fb8d27136e95/4/0/4060-05a_2_1.jpg")
-image.save
-image = Image.new(product_id: 3, url: "http://www.mastershoe-sportshoe.co.uk/images/IC-WhoInTheWorldAmI-Blue-MAIN-HEELS.jpg")
-image.save
-image = Image.new(product_id: 4, url: "")
-image.save
-image = Image.new(product_id: 5, url: "")
-image.save
-image = Image.new(product_id: 6, url: "")
-image.save
-image = Image.new(product_id: 7, url: "")
-image.save
-image = Image.new(product_id: 8, url: "")
-image.save
-image = Image.new(product_id: 9, url: "")
-image.save
+###
+###
+# image = Image.new(product_id: 1, url: "https://cdn.shopify.com/s/files/1/0366/7037/products/IMG_9642_edited_1024x1024.jpg?v=1469088093")
+# image.save
+# image = Image.new(product_id: 2, url: "http://www.irregularchoice.com/media/catalog/product/cache/1/image/700x/9df78eab33525d08d6e5fb8d27136e95/4/0/4060-05a_2_1.jpg")
+# image.save
+# image = Image.new(product_id: 3, url: "http://www.mastershoe-sportshoe.co.uk/images/IC-WhoInTheWorldAmI-Blue-MAIN-HEELS.jpg")
+# image.save
+# image = Image.new(product_id: 4, url: "")
+# image.save
+# image = Image.new(product_id: 5, url: "")
+# image.save
+# image = Image.new(product_id: 6, url: "")
+# image.save
+# image = Image.new(product_id: 7, url: "")
+# image.save
+# image = Image.new(product_id: 8, url: "")
+# image.save
+# image = Image.new(product_id: 9, url: "")
+# image.save

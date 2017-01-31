@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
     @product = Product.new(
                             name: params[:name],
                             price: params[:price],
-                            image: params[:image],
+                            supplier_id: params[:supplier][:supplier_id],
                             description: params[:description]
                             )
     @product.save

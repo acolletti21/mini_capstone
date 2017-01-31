@@ -9,7 +9,8 @@
 </div>
 
 <div>
-  Image: <input type="text" name="image">
+  <%= label_tag :supplier %>
+  <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name %>
 </div>
 
 <div>
