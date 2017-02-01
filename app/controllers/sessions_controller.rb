@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] == nil
+    session[:user_id] = nil
     flash[:warning] = "Incorrect Username or Password"
     redirect_to '/login'
   end

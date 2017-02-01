@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   
   belongs_to :supplier
   has_many :images
+  
 
   def sale_message
     if price.to_i < 200
