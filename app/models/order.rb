@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
+
+
   def calculate_subtotal
      self.subtotal = product.price * quantity
   end
@@ -12,6 +14,12 @@ class Order < ApplicationRecord
 
   def calculate_total
     self.total = subtotal + tax
+  end
+
+  def calculate_all_tools
+    calculate_total
+    calculate_tax
+    calculate_subtotal
   end
 
 end

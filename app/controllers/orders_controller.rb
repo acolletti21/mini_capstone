@@ -7,10 +7,7 @@ class OrdersController < ApplicationController
     order = Order.new(
                       quantity: params[:quantity],
                       user_id: session[:user_id],
-                      product_id: params[:product_id],
-                      subtotal: calculated_subtotal,
-                      tax: calculated_tax,
-                      total: calculated_total,
+                      product_id: params[:product_id]
                       )
     order.calculate_subtotal
     order.calculate_tax
@@ -23,9 +20,4 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params["id"])
   end
-
-  # def current_product
-  #   @current_product == Product
-  # end
-  # helper_method :current_user
 end

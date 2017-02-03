@@ -39,8 +39,13 @@
                 <li><a href="/signup">Sign Up</a></li>
                 <li><a href="/login">Log In</a></li>
                 <%end%>
+               
+                <% Category.all.each do |category| %>
+                <li><a href="/products?category=<%= category.name %>"><%= category.name %> Items</a></li>
+                <% end %>
+
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a href="/products?category=Star Wars">Star Wars</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
