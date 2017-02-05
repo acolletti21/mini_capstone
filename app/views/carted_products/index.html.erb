@@ -1,0 +1,23 @@
+
+  <h2>Review Order</h2>
+
+  <% @carted_products.each do |carted_product| %>
+ 
+
+  <h3>Product ID: <%= carted_product.id %></h3>
+  <h3>Name: <%= carted_product.product.name %></h3>
+  <h3>Total: <%= number_to_currency(carted_product.product.total) %></h3>
+  
+  <% end %>
+  
+  <%= form_tag "/orders", method: :post do%>
+  <div>
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity%>
+  </div>
+   <div>
+    <%= label_tag :product_id, "ID for product"%>
+    <%= text_field_tag :product_id%>
+  </div>
+  <%= submit_tag "Buy Now", class: "btn btn-default" %>
+  <%end%>
