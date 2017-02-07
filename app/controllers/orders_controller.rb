@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
+    carted_products = current_user.cart
+    # carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
+    #this is fine too, just not as clean
     subtotal = 0
 
     carted_products.each do |carted_product|
@@ -25,6 +27,7 @@ class OrdersController < ApplicationController
       carted_product.order_id = order.id
       carted_product.status = "purchased"
       carted_product.save
+
     end
 
   end
