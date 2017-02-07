@@ -7,7 +7,7 @@ class CartedProductsController < ApplicationController
                       status: "carted"
                       )
     carted_product.save
-    redirect_to "/carted_products/"
+    redirect_to "/carted_products"
   end
 
   def index

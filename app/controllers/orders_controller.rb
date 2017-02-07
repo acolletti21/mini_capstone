@@ -3,13 +3,18 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
+    subtotal = 0
+
+    @carted_products.each do |carted_product|
+      subtotal += (carted_product.product.price * carted_product.quantity)
+    end
 
     order = Order.new(
-                      quantity: params[:quantity],
                       user_id: session[:user_id],
-                      product_id: params[:product_id]
+                      subtotal: subtotal
                       )
-    order.calculate_subtotal
+    # order.calculate_subtotal
     order.calculate_tax
     order.calculate_total
 
