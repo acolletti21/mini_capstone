@@ -12,5 +12,8 @@ class CartedProductsController < ApplicationController
 
   def index
     @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
+    if @carted_products.count == 0
+      redirect_to '/products'
+    end
   end
 end
