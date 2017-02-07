@@ -16,4 +16,11 @@ class CartedProductsController < ApplicationController
       redirect_to '/products'
     end
   end
+
+  def destroy
+    carted_product = CartedProduct.find(params[:id]) 
+    carted_product.status = "removed"
+    redirect_to '/carted_products'
+    carted_product.save
+  end
 end

@@ -6,6 +6,7 @@
         <h3>Name: <%= carted_product.product.name %></h3>
         <h3>Quantity: <%= carted_product.quantity %></h3>
         <h3>Name: <%= carted_product.product.price %></h3>
+      
         <% end %>
         <h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
         <h3>Tax: <%= number_to_currency(@order.tax) %></h3>
