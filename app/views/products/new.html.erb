@@ -1,7 +1,13 @@
+
+<% @product.errors.full_messages.each do |error| %> 
+  <h2><%= error%></h2>
+<%end%>
+
 <h2>Add a new Product to the Database</h2>
 <%= form_tag "/products", method: :post do%>
 <div>
-  Name: <input type="text" name="name">
+  <%= label_tag :name %>
+  <%= text_field_tag :Name, @product.name %>
 </div>
 
 <div>

@@ -45,14 +45,17 @@
           </ul>
 
 
-
           <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span> Cart (#{@cart_count})".html_safe, "/carted_products", method: :get %></li>
             <li class="dropdown">
+            <%if current_user && current_user.admin %>
+              <li><%= link_to "Add Product", '/new'%></li>
+            <%end%>
+
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <% if current_user %>
-                <li> <%= current_user %></li>
+                <li> <%= current_user.email %></li>
                 <li><a href="/logout">Log Out</a></li>
                 <% else %>
                 <li><a href="/signup">Sign Up</a></li>
@@ -61,11 +64,6 @@
               </ul>
             </li>
           </ul>
-
-
-
-
-
 
           <form class="navbar-form navbar-left">
             <div class="form-group">

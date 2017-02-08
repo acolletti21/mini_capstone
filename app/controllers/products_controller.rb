@@ -1,5 +1,7 @@
 
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+
   def index
     @products = Product.all
     sort_attribute = params[:sort]
@@ -32,6 +34,10 @@ class ProductsController < ApplicationController
 
 
   def new
+    authenticate_admin
+    @product = Product.new
+    #this @product is helping us use it in new.html erb to do our each loop
+  
   end
 
   def create
@@ -41,9 +47,11 @@ class ProductsController < ApplicationController
                             supplier_id: params[:supplier][:supplier_id],
                             description: params[:description]
                             )
-    @product.save
-    flash[:success] = "Product Successfully Created"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "Product Successfully Created"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :new
   end
 
   def show
@@ -78,7 +86,7 @@ class ProductsController < ApplicationController
     flash[:warning] = "Product has been destroyed"
     redirect_to = "/products"
   end
-    
+     
 end
 
 

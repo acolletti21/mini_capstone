@@ -8,6 +8,11 @@ class Product < ApplicationRecord
   has_many :product_categories
   has_many :categories, through: :product_categories
 
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+  validates :description, length: {in: 200..500}
+
   def sale_message
     if price.to_i < 200
       sale_message = "Discount Item!"

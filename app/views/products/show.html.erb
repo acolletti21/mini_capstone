@@ -6,22 +6,27 @@
     <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive" style="width:450px">
   <% end %>
 
-  <h3>Description: <%= @product.description %></h3>
-  <h3>Product ID: <%= @product.id %></h3>
+  <h4>Description: <%= @product.description %></h4>
+  <h4>Product ID: <%= @product.id %></h4>
   <h4>Supplier: <%= @product.supplier.name %></h4>
-  <h3><%= @product.sale_message %></h3>
+  <h4><%= @product.sale_message %></h4>
   <h3>Tax: <%= number_to_currency(@product.tax) %></h3>
   <h3>Total: <%= number_to_currency(@product.total) %></h3>
   
-  <%= form_tag "/carted_products", method: :post do%>
-  <div>
-    <%= label_tag :quantity %>
-    <%= text_field_tag :quantity%>
-    <%= hidden_field_tag :product_id, @product.id %>
-  </div>
-  <%= submit_tag "Add to Cart", class: "btn btn-default" %>
+  <% if current_user %>
+    <%= form_tag "/carted_products", method: :post do%>
+      <div>
+        <%= label_tag :quantity %>
+        <%= text_field_tag :quantity%>
+        <%= hidden_field_tag :product_id, @product.id %>
+      </div>
+      <%= submit_tag "Add to Cart", class: "btn btn-default" %>
+    <%end%>
+  <% else%>
+   <h3>Log in to add products to your cart</h3>
   <%end%>
 
+<% if current_user && current_user.admin %>
   <div>
   <a class="btn btn-info" href="/products/<%= @product.id %>/edit"> Edit Product Info</a>
   </div>
@@ -31,4 +36,4 @@
   <% end %>
 
   <%= link_to "Add Image", "/products/#{@product.id}/images/new", class: "btn btn-warning"%>
-
+<%end%>

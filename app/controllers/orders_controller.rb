@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  #so user cant make orders without logging in
+
   def new
   end
 
