@@ -6,30 +6,11 @@ class OrdersController < ApplicationController
     carted_products = current_user.cart
     # carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
     #this is fine too, just not as clean
-    subtotal = 0
+    order = Order.create(user_id: current_user.id)
+    carted_products.update.all(status: 'purchased', order_id: order.id)
+    order.calculate_totals
 
-    carted_products.each do |carted_product|
-      subtotal += (carted_product.product.price * carted_product.quantity)
-    end
-
-    order = Order.new(
-                      user_id: session[:user_id],
-                      subtotal: subtotal
-                      )
-    # order.calculate_subtotal
-    order.calculate_tax
-    order.calculate_total
-
-    order.save
-    redirect_to "/orders/#{order.id}"
-
-    carted_products.each do |carted_product|
-      carted_product.order_id = order.id
-      carted_product.status = "purchased"
-      carted_product.save
-
-    end
-
+    redirect_to '/orders/#{order.id}'
   end
 
   def show

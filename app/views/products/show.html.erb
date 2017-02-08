@@ -3,7 +3,7 @@
   <p class="<%= "sale-item" if @product.discounted? %>">Price: <%= number_to_currency(@product.price) %></p>
 
   <% @product.images.each do |image| %>
-    <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
+    <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive" style="width:450px">
   <% end %>
 
   <h3>Description: <%= @product.description %></h3>

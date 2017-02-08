@@ -3,22 +3,17 @@ class Order < ApplicationRecord
   has_many :carted_products
   has_many :products, through: :carted_product
 
-  def calculate_subtotal
-     self.subtotal = product.price * quantity
-  end
 
-  def calculate_tax
-    self.tax = subtotal * 0.09
-  end
+  def calculate_totals
+    subtotal = 0
 
-  def calculate_total
-    self.total = subtotal + tax
-  end
+    carted_products.each do |carted_product|
+      subtotal += carted_product.subtotal
+    end
 
-  def calculate_all_tools
-    calculate_total
-    calculate_tax
-    calculate_subtotal
+    tax = subtotal * 0.09
+    total = subtotal + tax
+    update(subtotal: subtotal, tax: tax, total: total)
   end
 
 end

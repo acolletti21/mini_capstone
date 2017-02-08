@@ -2,10 +2,13 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="thumbnail">
+        <h3>Order Id: <%= "100#{@order.id}"%></h3>
+        <h3>Email: <%= @order.user.email %></h3>
+        
         <% @order.carted_products.each do |carted_product| %>
-        <h3>Name: <%= carted_product.product.name %></h3>
-        <h3>Quantity: <%= carted_product.quantity %></h3>
-        <h3>Name: <%= carted_product.product.price %></h3>
+        <h3>Name: <%= carted_product.product.name %></h3> -
+        <h3>Name: <%= carted_product.product.price %></h3> x
+        <h3>Quantity: <%= carted_product.quantity %></h3> x
       
         <% end %>
         <h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
