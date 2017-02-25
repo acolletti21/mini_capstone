@@ -37,7 +37,6 @@ class ProductsController < ApplicationController
     authenticate_admin
     @product = Product.new
     #this @product is helping us use it in new.html erb to do our each loop
-  
   end
 
   def create
@@ -52,6 +51,7 @@ class ProductsController < ApplicationController
       redirect_to "/products/#{@product.id}"
     else
       render :new
+    end
   end
 
   def show
@@ -69,14 +69,18 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.name = params[:name]
-    @product.price = params[:price]
-    @product.image = params[:image]
-    @product.description = params[:description]
-
-    @product.save
-    flash[:success] = "Product Successfully Updated"
-    redirect_to "/products/#{@product.id}"
+    @product.assign_attributes(
+                            name: params[:name],
+                            price: params[:price],
+                            supplier_id: params[:supplier][:supplier_id],
+                            description: params[:description]
+                            )
+    if @product.save
+      flash[:success] = "Product Successfully Updated"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :edit
+    end
   end
 
   def destroy

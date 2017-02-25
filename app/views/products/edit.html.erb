@@ -1,20 +1,31 @@
+<% @product.errors.full_messages.each do |error| %> 
+  <h2><%= error%></h2>
+<%end%>
+
 <h2>Edit Product</h2>
 
 <%= form_tag "/products/#{@product.id}", method: :patch do%>
+
 <div>
-  Name: <input type="text" name="name">
+  <%= label_tag :name %>
+  <%= text_field_tag :Name, @product.name %>
 </div>
 
 <div>
-  Price: <input type="text" name="price">
+  <%= label_tag :price %>
+  <%= text_field_tag :price, @product.price %>
+</div>
+
+
+<div>
+  <%= label_tag :supplier %>
+  <%= text_field_tag :supplier, :supplier_id, Supplier.all, :id, :name, selected: @product.supplier_id %>
 </div>
 
 <div>
-  Image: <input type="text" name="image">
+  <%= label_tag :description,  %>
+  <%= collection_select :description, @product.description %>
 </div>
 
-<div>
-  Description: <input type="text" name="description">
-</div>
 <input type="submit" value="Update Shoe"
 <% end %>

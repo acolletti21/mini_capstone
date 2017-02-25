@@ -18,14 +18,18 @@ class CartedProductsController < ApplicationController
   # end
 
   def create
-    carted_product = CartedProduct.new(
-                      user_id: current_user.id,
-                      product_id: params[:product_id],
-                      quantity: params[:quantity],
-                      status: "carted"
-                      )
-    carted_product.save
-    redirect_to "/carted_products"
+    @carted_product = CartedProduct.new(
+                                        user_id: current_user.id,
+                                        product_id: params[:product_id],
+                                        quantity: params[:quantity],
+                                        status: "carted"
+                                        )
+    if @carted_product.save
+      redirect_to "/carted_products"
+    else
+      flash[:warning] = "Please Enter a Quantity"
+      redirect_to "/products/#{params[:product_id]}"
+    end
   end
 
 

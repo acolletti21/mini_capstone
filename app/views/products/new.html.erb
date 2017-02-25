@@ -11,7 +11,8 @@
 </div>
 
 <div>
-  Price: <input type="text" name="price">
+  <%= label_tag :price %>
+  <%= text_field_tag :price, @product.price %>
 </div>
 
 <div>
@@ -20,7 +21,9 @@
 </div>
 
 <div>
-  Description: <input type="text" name="description">
+  <%= label_tag :description,  %>
+  <%= collection_select :description, @product.description %>
 </div>
+
 <input type="submit" value="Make New Shoe">
 <% end %>
